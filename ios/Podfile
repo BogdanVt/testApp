@@ -1,6 +1,8 @@
 require_relative '../node_modules/react-native/scripts/react_native_pods'
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
 
+
+
 platform :ios, '12.4'
 install! 'cocoapods', :deterministic_uuids => false
 
@@ -11,6 +13,7 @@ target 'testApp' do
   flags = get_default_flags()
 
   use_react_native!(
+
     :path => config[:reactNativePath],
     # Hermes is now enabled by default. Disable by setting this flag to false.
     # Upcoming versions of React Native may rely on get_default_flags(), but
