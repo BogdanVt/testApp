@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useState } from "react";
 import {
   View,
@@ -11,28 +12,28 @@ import {
 import { useLinkTo } from "@react-navigation/native";
 
 
-const fakeUsers=[
-  {login:"user1@email.com", password:"111111"},
-  {login:"user2@email.com", password:"222222"},
-  {login:"user3@email.com", password:"333333"},
-  {login:"user4@email.com", password:"444444"},
-  {login:"user5@email.com", password:"555555"},
-]
+const fakeUsers = [
+  { login: "user1@email.com", password: "111111" },
+  { login: "user2@email.com", password: "222222" },
+  { login: "user3@email.com", password: "333333" },
+  { login: "user4@email.com", password: "444444" },
+  { login: "user5@email.com", password: "555555" },
+];
 
 
 export const LoginScreen = ({ navigation }) => {
   const linkTo = useLinkTo();
-  const [mail, setMail]= useState('user1@email.com');
-  const [password, setPassword]= useState('111111');
-  const [error, setError]= useState(false);
+  const [mail, setMail] = useState("user1@email.com");
+  const [password, setPassword] = useState("111111");
+  const [error, setError] = useState(false);
 
 
-  const handleLogin = () => {
-    const isValidLogin=fakeUsers.filter(item=> item.login === mail).filter(item=> item.password === password)
-    if (isValidLogin.length > 0){
+  const handleSubmit = () => {
+    const isValidLogin = fakeUsers.filter(item => item.login === mail).filter(item => item.password === password);
+    if (isValidLogin.length > 0) {
       linkTo({ screen: "Home" });
       setError(false);
-    }else {
+    } else {
       setError(true);
     }
   };
@@ -44,21 +45,21 @@ export const LoginScreen = ({ navigation }) => {
       <TouchableWithoutFeedback
         onPress={() => Keyboard.dismiss()}
       >
-        <SafeAreaView  style={{backgroundColor: "#338beb"}}>
+        <SafeAreaView style={{ backgroundColor: "#338beb" }}>
           <View style={styles.container}>
-            <View style={{height:20}}>
-            {error &&
-              <Text style={{color:"red", fontSize:16}}>
-                Невірний логін або пароль
-            </Text>
-            }
+            <View style={{ height: 20 }}>
+              {error &&
+                <Text style={{ color: "red", fontSize: 16 }}>
+                  Невірний логін або пароль
+                </Text>
+              }
             </View>
             <View style={styles.textInputWrapper}>
               <TextInput
                 value={mail}
                 onChangeText={(e) => setMail(e)}
                 placeholder={"Email"}
-                 style={{ fontSize: 18, flex:1 }}
+                style={{ fontSize: 18, flex: 1 }}
               />
             </View>
             <View style={styles.textInputWrapper}>
@@ -67,29 +68,29 @@ export const LoginScreen = ({ navigation }) => {
                 onChangeText={(e) => setPassword(e)}
                 secureTextEntry
                 placeholder={"Пароль"}
-                style={{ fontSize: 18, flex:1 }}
+                style={{ fontSize: 18, flex: 1 }}
               />
             </View>
-          <View style={styles.btnContainer}>
-          {(mail && password) && (
+            <View style={styles.btnContainer}>
+              {(mail && password) && (
 
-          <TouchableOpacity
-            onPress={() => {
-              handleLogin();
-            }}
-            style={styles.btn}
-          >
-            <View>
-              <Text
-                style={{
-                  color: "white",
-                  fontSize: 20,
-                }}
-              >
-                Login
-              </Text>
-            </View>
-          </TouchableOpacity>)}
+                <TouchableOpacity
+                  onPress={() => {
+                    handleSubmit();
+                  }}
+                  style={styles.btn}
+                >
+                  <View>
+                    <Text
+                      style={{
+                        color: "white",
+                        fontSize: 20,
+                      }}
+                    >
+                      Login
+                    </Text>
+                  </View>
+                </TouchableOpacity>)}
             </View>
           </View>
         </SafeAreaView>
@@ -100,8 +101,8 @@ export const LoginScreen = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   container: {
-    width:"100%",
-    height:"100%",
+    width: "100%",
+    height: "100%",
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
@@ -122,16 +123,16 @@ const styles = StyleSheet.create({
     width: "40%",
     paddingVertical: 5,
     minHeight: 48,
-    backgroundColor:"#34d567" ,
+    backgroundColor: "#34d567",
     alignItems: "center",
-    justifyContent:"center"
+    justifyContent: "center",
   },
-  btnContainer:{
+  btnContainer: {
     height: 48,
-    width:"100%",
-    justifyContent:"center",
-    display:"flex",
-    alignItems:"center",
+    width: "100%",
+    justifyContent: "center",
+    display: "flex",
+    alignItems: "center",
     marginTop: 16,
   },
 });
